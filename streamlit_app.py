@@ -40,11 +40,11 @@ def process_file(uploaded_file):
     # Convert DataFrame to CSV for download
     csv = plantilla.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings
-    linko= f'<a href="data:file/csv;base64,{b64}" download="plataforma-ini.csv">Download CSV File</a>'
+    linko= f'<a href="data:file/csv;base64,{b64}" download="plataforma-ini.csv">Descargue el archivo</a>'
     st.markdown(linko, unsafe_allow_html=True)
 
 st.title('My App')
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Suba el archivo Excel recibido de la IPS")
 if uploaded_file is not None:
     process_file(uploaded_file)
