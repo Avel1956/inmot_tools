@@ -43,7 +43,7 @@ def process_file(uploaded_file):
     linko= f'<a href="data:file/csv;base64,{b64}" download="plataforma-ini.csv">Descargue el archivo</a>'
     st.markdown(linko, unsafe_allow_html=True)
 
-st.title('My App')
+st.title('Conversor de IPS a plataforma de rutas')
 
 uploaded_file = st.file_uploader("Suba el archivo Excel recibido de la IPS")
 if uploaded_file is not None:
