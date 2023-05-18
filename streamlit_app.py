@@ -8,6 +8,7 @@ def process_file(uploaded_file, filename):
     df = pd.read_excel(uploaded_file)
     #drop rows with DIRECCION empty
     df.dropna(subset=['DIRECCION'], inplace=True)
+    
 
     # Check if the columns have the expected names
     try:
@@ -48,7 +49,8 @@ def process_file(uploaded_file, filename):
 st.title('Conversor de IPS a plataforma de rutas')
 
 uploaded_file = st.file_uploader("Suba el archivo Excel recibido de la IPS")
-filename = os.path.splitext(uploaded_file.name)[0] + datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+# Filename = uploaded_file.name + date
+filename = uploaded_file.name + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
 if uploaded_file is not None:
     process_file(uploaded_file, filename)
