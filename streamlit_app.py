@@ -56,6 +56,6 @@ if uploaded_file is not None:
     filename = uploaded_file.name
     #delete extension
     filename = os.path.splitext(filename)[0]
-    filename = filename+ datetime.datetime.now()
+    filename = filename+ datetime.datetime.now().strftime("%Y%m%d")
 
     process_file(uploaded_file, filename)
