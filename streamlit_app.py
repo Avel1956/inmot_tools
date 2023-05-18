@@ -43,14 +43,15 @@ def process_file(uploaded_file, filename):
     # Convert DataFrame to CSV for download
     csv = plantilla.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()  # some strings
-    linko= f'<a href="data:file/csv;base64,{b64}" download=f{filename}+".csv">Descargue el archivo</a>'
+    linko= f'<a href="data:file/csv;base64,{b64}" download="{filename}"+".csv">Descargue el archivo</a>'
     st.markdown(linko, unsafe_allow_html=True)
 
 st.title('Conversor de IPS a plataforma de rutas')
 
 uploaded_file = st.file_uploader("Suba el archivo Excel recibido de la IPS")
 # Filename = uploaded_file.name + date
-filename = uploaded_file.name + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
 if uploaded_file is not None:
+    filename = uploaded_file.name + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+
     process_file(uploaded_file, filename)
